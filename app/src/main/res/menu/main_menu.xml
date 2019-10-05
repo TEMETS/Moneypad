@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/settings"
+    <item android:id="@+id/asetukset"
         android:title="@string/settings"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/help"
-        android:title="@string/help"
+    <item android:id="@+id/poistu"
+        android:title="@string/exit"
         app:showAsAction="never"/>
 
 
