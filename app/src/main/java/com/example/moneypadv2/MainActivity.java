@@ -11,17 +11,17 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    DataHandler dataHandler = new DataHandler(500);
+    DataHandler dataHandler = DataHandler.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dataHandler.add(50);
-        dataHandler.add(50);
+        //dataHandler.add(50);
+        //dataHandler.add(50);
 
-        dataHandler.add(-1,0,0,50);
+        //dataHandler.add(-1,0,0,50);
 
         updateUI();
 

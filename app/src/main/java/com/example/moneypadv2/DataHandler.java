@@ -11,7 +11,18 @@ public class DataHandler {
     private Data lastData; // Used to get most recent time and value
     //private Money balance;
 
-    public DataHandler(double amount) {
+    //public DataHandler(double amount) {
+    //    this.data = new ArrayList<>(); // Create an empty Data-list
+    //    //this.balance = new Money(amount); //Create a bank "account" with a specified amount of money
+    //}
+
+    private static final DataHandler ourInstance = new DataHandler(500);
+
+    public static DataHandler getInstance() {
+        return ourInstance;
+    }
+
+    private DataHandler(double amount) {
         this.data = new ArrayList<>(); // Create an empty Data-list
         //this.balance = new Money(amount); //Create a bank "account" with a specified amount of money
     }
