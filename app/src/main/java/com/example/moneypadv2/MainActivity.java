@@ -16,14 +16,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dataHandler.add(50);
+        dataHandler.add(50);
+
+        dataHandler.add(-1,0,0,50);
 
         updateUI();
 
     }
 
     public void updateUI() {
-        TextView textView = findViewById(R.id.spendToday);
-        textView.setText(Double.toString(dataHandler.spentToday()));
+        TextView spentToday = findViewById(R.id.spentToday);
+        spentToday.setText(Double.toString(dataHandler.spentToday()));
+
+        TextView spentYesterday = findViewById(R.id.spentYesterday);
+        spentYesterday.setText(Double.toString(dataHandler.spentYesterday()));
     }
 
     @Override

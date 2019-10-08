@@ -23,9 +23,13 @@ public class DataHandler {
     public void add(double value) {
         //if(!this.data.contains(new Data(time, 0))) {
 
-        Calendar time = Calendar.getInstance();
+        if (value >= 0) {
+            Calendar time = Calendar.getInstance();
 
-        this.data.add(new Data(time, value));
+            this.data.add(new Data(time, value));
+        }
+
+
         //this.lastData = new Data(time, value);
 
         //this.balance.subtract(value);
@@ -35,12 +39,15 @@ public class DataHandler {
     }
 
     public void add(int day, int month, int hour, double value) {
-        Calendar time = Calendar.getInstance();
-        time.add(Calendar.DAY_OF_MONTH, day);
-        time.add(Calendar.MONTH, month);
-        time.add(Calendar.HOUR_OF_DAY, hour);
 
-        this.data.add(new Data(time, value));
+        if (value >= 0) {
+            Calendar time = Calendar.getInstance();
+            time.add(Calendar.DAY_OF_MONTH, day);
+            time.add(Calendar.MONTH, month);
+            time.add(Calendar.HOUR_OF_DAY, hour);
+
+            this.data.add(new Data(time, value));
+        }
     }
 
     public String get(int i) {

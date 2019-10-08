@@ -3,8 +3,9 @@
     <string name="settings">Asetukset</string>
     <string name="exit">Poistu</string>
     <string name="money_left">0</string>
-    <string name="text_spent_today">Spent today</string>
-    <string name="text_spent_yesterday">Spend yesterday</string>
+    <string name="text_spent_today">Today</string>
+    <string name="text_spent_yesterday">Yesterday</string>
     <string name="spent_today">0</string>
     <string name="spent_yesterday">0</string>
+    <string name="text_spent">Spent</string>
 </resources>
