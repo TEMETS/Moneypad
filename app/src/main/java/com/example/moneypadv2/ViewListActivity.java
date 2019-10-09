@@ -11,7 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class ViewListActivity extends AppCompatActivity {
+
+    DataHandler dataHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +28,15 @@ public class ViewListActivity extends AppCompatActivity {
 
         final ListView listView = (ListView) findViewById(R.id.listView);
 
-        String[] values = new String[]{ "esimerkki1",
-        "esimerkki2",
-        "esimerkki3"};
+        dataHandler = DataHandler.getInstance();
 
+
+        ArrayList<String> values = new ArrayList<>();
+        int i = 0;
+        while (i < dataHandler.getSize()) {
+            values.add(dataHandler.get(i));
+            i++;
+        }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,android.R.id.text1,values);
 

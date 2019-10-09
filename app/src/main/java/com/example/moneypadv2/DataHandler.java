@@ -97,7 +97,7 @@ public class DataHandler implements Serializable {
         for (Data data : this.data) {
             Calendar test = data.getTime();
 
-            if (today.get(Calendar.DAY_OF_MONTH) == test.get(Calendar.DAY_OF_MONTH)) {
+            if ((today.get(Calendar.DAY_OF_MONTH) == test.get(Calendar.DAY_OF_MONTH)) && (today.get(Calendar.MONTH) == test.get(Calendar.MONTH)) && (today.get(Calendar.YEAR) == test.get(Calendar.YEAR))) {
                 //System.out.println("true");
                 spent += data.getValue();
             }
@@ -115,7 +115,7 @@ public class DataHandler implements Serializable {
         for (Data data : this.data) {
             Calendar test = data.getTime();
 
-            if ((today.get(Calendar.DAY_OF_MONTH) -1) == test.get(Calendar.DAY_OF_MONTH)) {
+            if ((today.get(Calendar.DAY_OF_MONTH) -1) == test.get(Calendar.DAY_OF_MONTH) && (today.get(Calendar.MONTH) == test.get(Calendar.MONTH)) && (today.get(Calendar.YEAR) == test.get(Calendar.YEAR))) {
                 //System.out.println("true");
                 spent += data.getValue();
             }
@@ -132,6 +132,10 @@ public class DataHandler implements Serializable {
         }
 
         return spent;
+    }
+
+    public int getSize() {
+        return this.data.size();
     }
 
 }

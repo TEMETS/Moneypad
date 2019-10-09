@@ -66,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
         TextView spentYesterday = findViewById(R.id.spentYesterday);
         spentYesterday.setText(Double.toString(dataHandler.spentYesterday()));
+
+        TextView spentAll = findViewById(R.id.spentAll);
+        spentAll.setText(Double.toString(dataHandler.spentAll()));
     }
 
     @Override
