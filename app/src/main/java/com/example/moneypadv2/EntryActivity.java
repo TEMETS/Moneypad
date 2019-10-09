@@ -25,10 +25,7 @@ import java.io.Serializable;
 public class EntryActivity extends AppCompatActivity {
 
     DataHandler dataHandler;
-    EditText editText5;
-    EditText editText6;
-    EditText editText7;
-    EditText editText8;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
