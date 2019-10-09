@@ -74,20 +74,6 @@ public class DataHandler implements Serializable {
         }
     }
 
-    public void sort() {
-        Data test = this.data.get(0);
-        Calendar calendar = test.getTime();
-
-        Data test2 = this.data.get(1);
-        Calendar calendar2 = test2.getTime();
-
-        Data test3 = this.data.get(2);
-        Calendar calendar3 = test3.getTime();
-
-        System.out.println(calendar.after(calendar3));
-        //calendar.
-    }
-
     public double spentToday() {
         Calendar today = Calendar.getInstance();
         System.out.println("Looking for: " + today.get(Calendar.DAY_OF_MONTH));

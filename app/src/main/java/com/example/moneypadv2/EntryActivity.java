@@ -45,28 +45,34 @@ public class EntryActivity extends AppCompatActivity {
 
     public void saveEntry(View view) {
         TextView month = findViewById(R.id.editText5);
+        Double monthD;
         int monthI;
         if (month.getText().length() != 0) {
             String monthS = month.getText().toString();
-            monthI = Integer.parseInt(monthS);
+            monthD = Double.parseDouble(monthS);
+            monthI = (int)Math.round(monthD);
         } else {
             monthI = 0;
         }
 
         TextView day = findViewById(R.id.editText6);
+        Double dayD;
         int dayI;
         if (day.getText().length() != 0) {
             String dayS = day.getText().toString();
-            dayI = Integer.parseInt(dayS);
+            dayD = Double.parseDouble(dayS);
+            dayI = (int)Math.round(dayD);
         } else {
             dayI = 0;
         }
 
         TextView hour = findViewById(R.id.editText7);
+        Double hourD;
         int hourI;
         if (hour.getText().length() != 0) {
             String hourS = hour.getText().toString();
-            hourI = Integer.parseInt(hourS);
+            hourD = Double.parseDouble(hourS);
+            hourI = (int)Math.round(hourD);
         } else {
             hourI = 0;
         }
@@ -81,6 +87,8 @@ public class EntryActivity extends AppCompatActivity {
         }
 
         if (valueI != 0 && valueI > 0) {
+            Toast.makeText(EntryActivity.this,"Added to chart",Toast.LENGTH_SHORT).show();
+
             dataHandler.add(dayI, monthI, hourI, valueI);
 
 
@@ -105,7 +113,7 @@ public class EntryActivity extends AppCompatActivity {
 
         //dataHandler.add(50);
 
-        Toast.makeText(EntryActivity.this,"Added to chart",Toast.LENGTH_SHORT).show();
+
 
         final EditText editText5 =  findViewById(R.id.editText5);
         final EditText editText6 =  findViewById(R.id.editText6);
