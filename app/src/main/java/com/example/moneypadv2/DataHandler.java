@@ -39,14 +39,7 @@ public class DataHandler {
 
             this.data.add(new Data(time, value));
         }
-
-
-        //this.lastData = new Data(time, value);
-
-        //this.balance.subtract(value);
-        //} else {
-        //    throw new IllegalArgumentException("Same time used previously");
-        //}
+        
     }
 
     public void add(int day, int month, int hour, double value) {
