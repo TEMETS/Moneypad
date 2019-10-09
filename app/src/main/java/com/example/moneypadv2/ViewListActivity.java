@@ -1,7 +1,9 @@
 package com.example.moneypadv2;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.drm.DrmStore;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +17,9 @@ public class ViewListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Chart");
 
         final ListView listView = (ListView) findViewById(R.id.listView);
 
