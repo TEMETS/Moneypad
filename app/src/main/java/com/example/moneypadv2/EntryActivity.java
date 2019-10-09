@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -23,6 +25,10 @@ import java.io.Serializable;
 public class EntryActivity extends AppCompatActivity {
 
     DataHandler dataHandler;
+    EditText editText5;
+    EditText editText6;
+    EditText editText7;
+    EditText editText8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +107,18 @@ public class EntryActivity extends AppCompatActivity {
         //int month = Integer.getInteger(monthS.getText().toString());
 
         //dataHandler.add(50);
+
+        Toast.makeText(EntryActivity.this,"Added to chart",Toast.LENGTH_SHORT).show();
+
+        final EditText editText5 =  findViewById(R.id.editText5);
+        final EditText editText6 =  findViewById(R.id.editText6);
+        final EditText editText7 =  findViewById(R.id.editText7);
+        final EditText editText8 =  findViewById(R.id.editText8);
+
+        editText5.setText("");
+        editText6.setText("");
+        editText7.setText("");
+        editText8.setText("");
     }
 
     static public String objectToString(Serializable object) {
