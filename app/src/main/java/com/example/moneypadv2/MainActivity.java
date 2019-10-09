@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     DataHandler dataHandler = DataHandler.getInstance();
     //DataHandler dataHandler;
+    boolean resetData = false; //Enable this to add new methods to DataHandler. Otherwise program crashes.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         //System.out.println(dataHandlerString);
 
-        if (!dataHandlerString.contains("Nothing stored")) {
+        if (!dataHandlerString.contains("Nothing stored") && resetData == false) {
             Log.d("DataPref","FOUND PREVIOUS DATA");
             Serializable dataHandlerSerializable = stringToObject(dataHandlerString);
             DataHandler tempHandler = (DataHandler) dataHandlerSerializable;
@@ -41,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
             dataHandler.overrideData(tempHandler);
 
             //dataHandler = (DataHandler) dataHandlerSerializable;
+        }
+
+        if (resetData) {
+            SharedPreferences prefPut = getSharedPreferences("DataPref", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor prefEditor = prefPut.edit();
+            prefEditor.putString("DataHandler", "Nothing stored");
+            prefEditor.commit();
         }
 
         //dataHandler.add(50);

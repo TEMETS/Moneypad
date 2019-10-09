@@ -124,4 +124,14 @@ public class DataHandler implements Serializable {
         return spent;
     }
 
+    public double spentAll() {
+        Double spent = 0.0;
+
+        for (Data data : this.data) {
+            spent += data.getValue();
+        }
+
+        return spent;
+    }
+
 }

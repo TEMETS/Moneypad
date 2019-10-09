@@ -11,7 +11,7 @@
     <string name="spent_yesterday">0</string>
     <string name="text_spent">Spent</string>
     <string name="money">Money</string>
-    <string name="left">Left</string>
+    <string name="left">Used</string>
 
     <string name="editMonth">Edit a month</string>
     <string name="editDay">Edit a day</string>
