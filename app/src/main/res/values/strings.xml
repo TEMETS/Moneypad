@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">MoneyPadV2</string>
+    <string name="newEntry">NewEntry</string>
+    <string name="entryActivity">EntryActivity</string>
+    <string name="chart">Chart</string>
+    <string name="settings">Settings</string>
+    <string name="money_left">0</string>
+    <string name="text_spent_today">Today</string>
+    <string name="text_spent_yesterday">Yesterday</string>
+    <string name="spent_today">0</string>
+    <string name="spent_yesterday">0</string>
+    <string name="text_spent">Spent</string>
+    <string name="money">Money</string>
+    <string name="left">Used</string>
+
+    <string name="editMonth">Edit a month</string>
+    <string name="editDay">Edit a day</string>
+    <string name="editHour">Edit an hour</string>
+    <string name="enterValue">Enter a value</string>
 </resources>

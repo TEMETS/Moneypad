@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/newEntry"
+        android:title="New Entry"
+        android:onClick="entryActivity"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/chart"
+        android:title="Chart"
+        android:onClick="viewListActivity"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/resetMemory"
+        android:title="Reset memory"
+        android:onClick="resetMemory"
+        app:showAsAction="never"/>
+
+
+</menu>
