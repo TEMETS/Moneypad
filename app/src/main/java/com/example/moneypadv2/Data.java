@@ -52,7 +52,13 @@ public class Data implements Serializable {
 
     @Override
     public String toString() {
-        return "Date: " + this.calendar.get(Calendar.DAY_OF_MONTH) + "." + (this.calendar.get(Calendar.MONTH) + 1) + "\nTime: " + this.calendar.get(Calendar.HOUR_OF_DAY) + ":" + this.calendar.get(Calendar.MINUTE) + "\nAmount: " + this.value;
+        String minutesS = Integer.toString(this.calendar.get(Calendar.MINUTE));
+        if (minutesS.length() <= 1){
+            minutesS = "0" + minutesS;
+        }
+
+
+        return "Date: " + this.calendar.get(Calendar.DAY_OF_MONTH) + "." + (this.calendar.get(Calendar.MONTH) + 1) + "\nTime: " + this.calendar.get(Calendar.HOUR_OF_DAY) + ":" + minutesS + "\nAmount: " + this.value;
     }
 
 }
