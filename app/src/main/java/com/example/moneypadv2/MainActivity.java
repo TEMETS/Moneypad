@@ -71,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void viewListActivity (MenuItem menuItem) {
+        Intent intent = new Intent(this, ViewListActivity.class);
+        startActivity(intent);
+    }
+
     @SuppressWarnings("unchecked")
     static public Serializable stringToObject(String string){
         byte[] bytes = Base64.decode(string,0);
