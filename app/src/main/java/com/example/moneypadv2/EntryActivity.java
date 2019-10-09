@@ -72,10 +72,10 @@ public class EntryActivity extends AppCompatActivity {
         }
 
         TextView value = findViewById(R.id.editText8);
-        int valueI;
+        double valueI;
         if (value.getText().length() != 0) {
             String valueS = value.getText().toString();
-            valueI = Integer.parseInt(valueS);
+            valueI = Double.parseDouble(valueS);
         } else {
             valueI = 0;
         }
