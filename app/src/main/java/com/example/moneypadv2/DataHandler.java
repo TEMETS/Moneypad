@@ -1,11 +1,13 @@
 package com.example.moneypadv2;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
-public class DataHandler {
+public class DataHandler implements Serializable {
 
     private ArrayList<Data> data;
     private Data lastData; // Used to get most recent time and value
@@ -27,6 +29,14 @@ public class DataHandler {
         //this.balance = new Money(amount); //Create a bank "account" with a specified amount of money
     }
 
+    public void overrideData(DataHandler dataHandler) {
+        //ArrayList<Data> test = new ArrayList<>();
+
+        ArrayList<Data> tempData = dataHandler.data;
+
+        this.data = tempData;
+    }
+
     public void setLast(Data data) {
         this.lastData = data;
     }
@@ -39,7 +49,7 @@ public class DataHandler {
 
             this.data.add(new Data(time, value));
         }
-        
+
     }
 
     public void add(int day, int month, int hour, double value) {

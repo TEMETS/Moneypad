@@ -1,9 +1,10 @@
 package com.example.moneypadv2;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Data {
+public class Data implements Serializable {
     private Calendar calendar;
     private double value;
 
