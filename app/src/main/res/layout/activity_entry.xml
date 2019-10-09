@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/enterValue"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
