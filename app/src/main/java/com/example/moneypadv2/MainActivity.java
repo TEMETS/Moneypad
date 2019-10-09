@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     DataHandler dataHandler = DataHandler.getInstance();
     //DataHandler dataHandler;
     boolean resetData = false; //Enable this to add new methods to DataHandler. Otherwise program crashes.
+    boolean resetMemorySure = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,27 @@ public class MainActivity extends AppCompatActivity {
     public void viewListActivity (MenuItem menuItem) {
         Intent intent = new Intent(this, ViewListActivity.class);
         startActivity(intent);
+    }
+
+    public void resetMemory(MenuItem menuItem) {
+        Toast.makeText(MainActivity.this,"Are you sure?",Toast.LENGTH_LONG).show();
+
+        if (resetMemorySure) {
+
+            resetMemorySure = false;
+
+            SharedPreferences prefPut = getSharedPreferences("DataPref", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor prefEditor = prefPut.edit();
+            prefEditor.putString("DataHandler", "Nothing stored");
+            prefEditor.commit();
+
+            dataHandler.clearData();
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+
+        }
+        resetMemorySure = true;
     }
 
     @SuppressWarnings("unchecked")

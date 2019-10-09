@@ -13,7 +13,11 @@
         android:title="Chart"
         android:onClick="viewListActivity"
         app:showAsAction="never"/>
-
+    <item
+        android:id="@+id/resetMemory"
+        android:title="Reset memory"
+        android:onClick="resetMemory"
+        app:showAsAction="never"/>
 
 
 </menu>

@@ -37,6 +37,10 @@ public class DataHandler implements Serializable {
         this.data = tempData;
     }
 
+    public void clearData() {
+        this.data.clear();
+    }
+
     public void setLast(Data data) {
         this.lastData = data;
     }
