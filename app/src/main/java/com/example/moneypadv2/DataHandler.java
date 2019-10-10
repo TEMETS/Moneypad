@@ -10,7 +10,6 @@ import java.util.Date;
 public class DataHandler implements Serializable {
 
     private ArrayList<Data> data;
-    private Data lastData; // Used to get most recent time and value
 
     private static final DataHandler ourInstance = new DataHandler(500);
 
@@ -18,10 +17,20 @@ public class DataHandler implements Serializable {
         return ourInstance;
     }
 
+    /**
+     * Creates a DataHandler with a specified amount of balance
+     * (balance not currently implemented)
+     * @param amount
+     */
     private DataHandler(double amount) {
         this.data = new ArrayList<>(); // Create an empty Data-list
     }
 
+    /**
+     * Used to synchronise data with SharedPreferences
+     * It takes temporary
+     * @param dataHandler
+     */
     public void overrideData(DataHandler dataHandler) {
 
         ArrayList<Data> tempData = dataHandler.data;
@@ -29,14 +38,13 @@ public class DataHandler implements Serializable {
         this.data = tempData;
     }
 
+    /**
+     * Clears ArrayList
+     * Used in resetMemory
+     */
     public void clearData() {
         this.data.clear();
     }
-
-    public void setLast(Data data) {
-        this.lastData = data;
-    }
-
 
     /**
      *  Adds a Data entry to DataHandler's ArrayList
@@ -75,16 +83,29 @@ public class DataHandler implements Serializable {
         }
     }
 
+    /**
+     * Gets the information of Data in a simple string which holds date and value.
+     * @param i ArrayList's index
+     * @return Information of Data
+     */
     public String get(int i) {
         return this.data.get(i).toString();
     }
 
+    /**
+     * Prints every element of ArrayList.
+     * Method not currently used.
+     */
     public void getAll() {
         for (Data data : this.data) {
             System.out.println(data + "\n");
         }
     }
 
+    /**
+     * Returns the spent amount of money from today.
+     * @return double
+     */
     public double spentToday() {
         Calendar today = Calendar.getInstance();
         System.out.println("Looking for: " + today.get(Calendar.DAY_OF_MONTH));
@@ -102,6 +123,10 @@ public class DataHandler implements Serializable {
         return spent;
     }
 
+    /**
+     * Returns the spent amount of money from yesterday.
+     * @return double
+     */
     public double spentYesterday() {
         Calendar today = Calendar.getInstance();
         System.out.println("Looking for: " + (today.get(Calendar.DAY_OF_MONTH)-1));
@@ -119,6 +144,10 @@ public class DataHandler implements Serializable {
         return spent;
     }
 
+    /**
+     * Returns the spent amount of money from all the time.
+     * @return double
+     */
     public double spentAll() {
         Double spent = 0.0;
 
@@ -129,6 +158,10 @@ public class DataHandler implements Serializable {
         return spent;
     }
 
+    /**
+     * Return the size of the ArrayList
+     * @return int
+     */
     public int getSize() {
         return this.data.size();
     }

@@ -119,7 +119,7 @@ public class EntryActivity extends AppCompatActivity {
     /**
      * Changes object to string. Uses Base64 to transform data.
      * @param object
-     * @return
+     * @return serializableObject
      */
     static public String objectToString(Serializable object) {
         String encoded = null;

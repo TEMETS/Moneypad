@@ -13,10 +13,18 @@ public class Data implements Serializable {
         this.value = value;
     }
 
+    /**
+     * Returns the Calendar object of Data
+     * @return Calendar
+     */
     public Calendar getTime() {
         return this.calendar;
     }
 
+    /**
+     * Gets the money value of Data
+     * @return double
+     */
     public double getValue() {
         return this.value;
     }
@@ -46,11 +54,15 @@ public class Data implements Serializable {
         return true;
     }
 
+    /**
+     * Returns all necessary information of the Data-object in format Date: day.month Time: hour:minute
+     * @return String
+     */
     @Override
     public String toString() {
         String minutesS = Integer.toString(this.calendar.get(Calendar.MINUTE));
-        if (minutesS.length() <= 1){
-            minutesS = "0" + minutesS;
+        if (minutesS.length() <= 1){ //If the represented minute is 1 digit long add a zero in front of it
+            minutesS = "0" + minutesS; //Makes minutes look like xx:0x instead of xx:x
         }
 
 
