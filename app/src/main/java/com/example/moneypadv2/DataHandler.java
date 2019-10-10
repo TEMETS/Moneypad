@@ -37,6 +37,11 @@ public class DataHandler implements Serializable {
         this.lastData = data;
     }
 
+
+    /**
+     *  Adds a Data entry to DataHandler's ArrayList
+     * @param value A value to present spent money
+     */
     public void add(double value) {
 
         if (value >= 0) {
@@ -47,6 +52,17 @@ public class DataHandler implements Serializable {
 
     }
 
+    /**
+     *  Adds a specified Data entry to ArrayList
+     *      using Calendar-object and a money value.
+     *      Default time is current time.
+     *      In example dataHandler.add(0,0,-1,5) adds an entry with current time except one hour earlier and a money value of 5
+     *
+     * @param day   Change day by incrementing or decrementing
+     * @param month Change month by incrementing or decrementing
+     * @param hour  Change hour by incrementing or decrementing
+     * @param value A value to present spent money
+     */
     public void add(int day, int month, int hour, double value) {
 
         if (value >= 0) {
