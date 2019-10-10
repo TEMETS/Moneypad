@@ -23,7 +23,7 @@ public class ViewListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
 
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar(); // Actionbar backbutton to MainActivity
         actionBar.setTitle("Chart");
 
         final ListView listView = (ListView) findViewById(R.id.listView);

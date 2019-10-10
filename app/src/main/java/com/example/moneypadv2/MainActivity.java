@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Updates UI
+     */
     public void updateUI() {
         TextView spentToday = findViewById(R.id.spentToday);
         spentToday.setText(Double.toString(dataHandler.spentToday()));
@@ -64,22 +67,39 @@ public class MainActivity extends AppCompatActivity {
         spentAll.setText(Double.toString(dataHandler.spentAll()));
     }
 
+    /**
+     * Creates menu-button to Actionbar
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
+    /**
+     * Creates new activity (EntryActivity)
+     * @param menuItem
+     */
     public void entryActivity (MenuItem menuItem) {
         Intent intent = new Intent(this, EntryActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Creates new activity (ViewListActivity)
+     * @param menuItem
+     */
     public void viewListActivity (MenuItem menuItem) {
         Intent intent = new Intent(this, ViewListActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Resets app's memory / Clears SharedPreferences and Datahandler
+     * @param menuItem
+     */
     public void resetMemory(MenuItem menuItem) {
         Toast.makeText(MainActivity.this,"Are you sure?",Toast.LENGTH_LONG).show();
 
@@ -102,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @SuppressWarnings("unchecked")
+    /**
+     * Changes string to object. Uses Base64 to transform data.
+     */
     static public Serializable stringToObject(String string){
         byte[] bytes = Base64.decode(string,0);
         Serializable object = null;

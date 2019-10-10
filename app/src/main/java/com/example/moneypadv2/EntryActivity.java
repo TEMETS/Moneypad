@@ -32,13 +32,19 @@ public class EntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
 
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar(); // Actionbar backbutton to MainActivity
         actionBar.setTitle("Add a new entry");
 
 
         dataHandler = DataHandler.getInstance();
     }
 
+    /**
+     * Saves added entry to Datahandler's arraylist
+     * Clears editTexts
+     * Toast/pop-up
+     * @param view
+     */
     public void saveEntry(View view) {
         TextView month = findViewById(R.id.editText5);
         Double monthD;
@@ -110,6 +116,11 @@ public class EntryActivity extends AppCompatActivity {
         editText8.setText("");
     }
 
+    /**
+     * Changes object to string. Uses Base64 to transform data.
+     * @param object
+     * @return
+     */
     static public String objectToString(Serializable object) {
         String encoded = null;
         try {
