@@ -37,10 +37,6 @@ public class EntryActivity extends AppCompatActivity {
 
 
         dataHandler = DataHandler.getInstance();
-
-        //TextView test = findViewById(R.id.textView7);
-        //test.setText(Double.toString(dataHandler.spentToday()));
-
     }
 
     public void saveEntry(View view) {
@@ -91,10 +87,7 @@ public class EntryActivity extends AppCompatActivity {
 
             dataHandler.add(dayI, monthI, hourI, valueI);
 
-
             String dataHandlerString = objectToString(dataHandler);
-
-            //System.out.println(dataHandlerString);
 
             SharedPreferences prefPut = getSharedPreferences("DataPref", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
@@ -105,15 +98,6 @@ public class EntryActivity extends AppCompatActivity {
         } else {
             Log.d("EntryLogger", "Illegal value");
         }
-
-        //TextView test = findViewById(R.id.textView7);
-        //test.setText(Integer.toString(monthI));
-
-        //int month = Integer.getInteger(monthS.getText().toString());
-
-        //dataHandler.add(50);
-
-
 
         final EditText editText5 =  findViewById(R.id.editText5);
         final EditText editText6 =  findViewById(R.id.editText6);

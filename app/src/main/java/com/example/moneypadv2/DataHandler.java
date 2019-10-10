@@ -11,12 +11,6 @@ public class DataHandler implements Serializable {
 
     private ArrayList<Data> data;
     private Data lastData; // Used to get most recent time and value
-    //private Money balance;
-
-    //public DataHandler(double amount) {
-    //    this.data = new ArrayList<>(); // Create an empty Data-list
-    //    //this.balance = new Money(amount); //Create a bank "account" with a specified amount of money
-    //}
 
     private static final DataHandler ourInstance = new DataHandler(500);
 
@@ -26,11 +20,9 @@ public class DataHandler implements Serializable {
 
     private DataHandler(double amount) {
         this.data = new ArrayList<>(); // Create an empty Data-list
-        //this.balance = new Money(amount); //Create a bank "account" with a specified amount of money
     }
 
     public void overrideData(DataHandler dataHandler) {
-        //ArrayList<Data> test = new ArrayList<>();
 
         ArrayList<Data> tempData = dataHandler.data;
 
@@ -46,7 +38,6 @@ public class DataHandler implements Serializable {
     }
 
     public void add(double value) {
-        //if(!this.data.contains(new Data(time, 0))) {
 
         if (value >= 0) {
             Calendar time = Calendar.getInstance();
@@ -88,7 +79,6 @@ public class DataHandler implements Serializable {
             Calendar test = data.getTime();
 
             if ((today.get(Calendar.DAY_OF_MONTH) == test.get(Calendar.DAY_OF_MONTH)) && (today.get(Calendar.MONTH) == test.get(Calendar.MONTH)) && (today.get(Calendar.YEAR) == test.get(Calendar.YEAR))) {
-                //System.out.println("true");
                 spent += data.getValue();
             }
         }
@@ -106,7 +96,6 @@ public class DataHandler implements Serializable {
             Calendar test = data.getTime();
 
             if ((today.get(Calendar.DAY_OF_MONTH) -1) == test.get(Calendar.DAY_OF_MONTH) && (today.get(Calendar.MONTH) == test.get(Calendar.MONTH)) && (today.get(Calendar.YEAR) == test.get(Calendar.YEAR))) {
-                //System.out.println("true");
                 spent += data.getValue();
             }
         }

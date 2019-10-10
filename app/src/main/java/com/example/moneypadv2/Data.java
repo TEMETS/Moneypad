@@ -21,10 +21,6 @@ public class Data implements Serializable {
         return this.value;
     }
 
-    //public int index() {
-    //    return 1;
-    //}
-
     @Override
     public int hashCode() {
         int hash = 5;

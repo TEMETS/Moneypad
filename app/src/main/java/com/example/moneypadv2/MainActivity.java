@@ -22,7 +22,6 @@ import java.io.Serializable;
 public class MainActivity extends AppCompatActivity {
 
     DataHandler dataHandler = DataHandler.getInstance();
-    //DataHandler dataHandler;
     boolean resetData = false; //Enable this to add new methods to DataHandler. Otherwise program crashes.
     boolean resetMemorySure = false;
 
@@ -34,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefGet = getSharedPreferences("DataPref" , Activity.MODE_PRIVATE);
         String dataHandlerString = prefGet.getString("DataHandler", "Nothing stored");
 
-        //System.out.println(dataHandlerString);
-
         if (!dataHandlerString.contains("Nothing stored") && resetData == false) {
             Log.d("DataPref","FOUND PREVIOUS DATA");
             Serializable dataHandlerSerializable = stringToObject(dataHandlerString);
@@ -43,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
             dataHandler.overrideData(tempHandler);
 
-            //dataHandler = (DataHandler) dataHandlerSerializable;
         }
 
         if (resetData) {
@@ -52,11 +48,6 @@ public class MainActivity extends AppCompatActivity {
             prefEditor.putString("DataHandler", "Nothing stored");
             prefEditor.commit();
         }
-
-        //dataHandler.add(50);
-        //dataHandler.add(50);
-
-        //dataHandler.add(-1,0,0,50);
 
         updateUI();
 
