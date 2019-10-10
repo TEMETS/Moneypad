@@ -19,12 +19,19 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 
+/**
+ * The main activity of the app
+ */
 public class MainActivity extends AppCompatActivity {
 
-    DataHandler dataHandler = DataHandler.getInstance();
+    DataHandler dataHandler = DataHandler.getInstance(); //Gets the singleton DataHandler
     boolean resetData = false; //Enable this to add new methods to DataHandler. Otherwise program crashes.
     boolean resetMemorySure = false;
 
+    /**
+     * Gets previous DataHandler from SharedPreferences or creates a new one
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Updates UI
+     * Updates the TextViews from MainActivity
      */
     public void updateUI() {
         TextView spentToday = findViewById(R.id.spentToday);
@@ -79,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Creates new activity (EntryActivity)
+     * Creates a new activity (EntryActivity)
      * @param menuItem
      */
     public void entryActivity (MenuItem menuItem) {
@@ -121,10 +128,10 @@ public class MainActivity extends AppCompatActivity {
         resetMemorySure = true;
     }
 
-    @SuppressWarnings("unchecked")
     /**
-     * Changes string to object. Uses Base64 to transform data.
+     * Changes strings to Serializable-objects. Uses Base64 to decode data.
      */
+    @SuppressWarnings("unchecked")
     static public Serializable stringToObject(String string){
         byte[] bytes = Base64.decode(string,0);
         Serializable object = null;

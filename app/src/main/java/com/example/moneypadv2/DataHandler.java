@@ -7,6 +7,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
+/**
+ * Includes all necessary methods to save and handle data
+ */
 public class DataHandler implements Serializable {
 
     private ArrayList<Data> data;

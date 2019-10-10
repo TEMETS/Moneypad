@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Holds a private Calendar-object to store time
+ * and a private double value to store money as a value
+ */
 public class Data implements Serializable {
     private Calendar calendar;
     private double value;

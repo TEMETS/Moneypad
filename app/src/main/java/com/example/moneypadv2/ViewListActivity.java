@@ -14,6 +14,9 @@ import android.widget.Toast;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * Creates a simple list from all entries that DataHandler has stored
+ */
 public class ViewListActivity extends AppCompatActivity {
 
     DataHandler dataHandler;
@@ -28,7 +31,7 @@ public class ViewListActivity extends AppCompatActivity {
 
         final ListView listView = (ListView) findViewById(R.id.listView);
 
-        dataHandler = DataHandler.getInstance();
+        dataHandler = DataHandler.getInstance(); //Gets the singleton DataHandler
 
 
         ArrayList<String> values = new ArrayList<>();

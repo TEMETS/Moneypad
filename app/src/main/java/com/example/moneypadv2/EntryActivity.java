@@ -22,6 +22,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+/**
+ * Used to save activity to DataHandler and also to SharedPreferences
+ */
 public class EntryActivity extends AppCompatActivity {
 
     DataHandler dataHandler;
@@ -36,13 +39,13 @@ public class EntryActivity extends AppCompatActivity {
         actionBar.setTitle("Add a new entry");
 
 
-        dataHandler = DataHandler.getInstance();
+        dataHandler = DataHandler.getInstance(); //Gets the singleton DataHandler
     }
 
     /**
-     * Saves added entry to Datahandler's arraylist
-     * Clears editTexts
-     * Toast/pop-up
+     * Saves added entry to Datahandler's ArrayList
+     *  Makes a toast if add was successfull
+     *  Clears text boxes
      * @param view
      */
     public void saveEntry(View view) {
@@ -118,8 +121,8 @@ public class EntryActivity extends AppCompatActivity {
 
     /**
      * Changes object to string. Uses Base64 to transform data.
-     * @param object
-     * @return serializableObject
+     * @param object Serializable object
+     * @return Serialized object
      */
     static public String objectToString(Serializable object) {
         String encoded = null;
@@ -133,23 +136,6 @@ public class EntryActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return encoded;
-    }
-
-    @SuppressWarnings("unchecked")
-    static public Serializable stringToObject(String string){
-        byte[] bytes = Base64.decode(string,0);
-        Serializable object = null;
-        try {
-            ObjectInputStream objectInputStream = new ObjectInputStream( new ByteArrayInputStream(bytes) );
-            object = (Serializable)objectInputStream.readObject();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (ClassCastException e) {
-            e.printStackTrace();
-        }
-        return object;
     }
 
 }
