@@ -9,6 +9,7 @@ import java.util.Date;
 
 /**
  * Includes all necessary methods to save and handle data
+ * @author Touko Ala-Savikota
  */
 public class DataHandler implements Serializable {
 

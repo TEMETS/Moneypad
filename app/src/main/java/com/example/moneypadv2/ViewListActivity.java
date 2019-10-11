@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 /**
  * Creates a simple list from all entries that DataHandler has stored
+ * @author Eetu Penttilä
  */
 public class ViewListActivity extends AppCompatActivity {
 

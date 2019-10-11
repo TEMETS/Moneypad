@@ -21,12 +21,13 @@ import java.io.Serializable;
 
 /**
  * The main activity of the app
+ * @author Touko Ala-Savikota
  */
 public class MainActivity extends AppCompatActivity {
 
     DataHandler dataHandler = DataHandler.getInstance(); //Gets the singleton DataHandler
     boolean resetData = false; //Enable this to add new methods to DataHandler. Otherwise program crashes.
-    boolean resetMemorySure = false;
+    boolean resetMemorySure = false; //Used with Reset memory -button. Makes sure if it's the second time touching the button
 
     /**
      * Gets previous DataHandler from SharedPreferences or creates a new one
@@ -37,18 +38,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Gets encoded string from SharedPreferences
         SharedPreferences prefGet = getSharedPreferences("DataPref" , Activity.MODE_PRIVATE);
         String dataHandlerString = prefGet.getString("DataHandler", "Nothing stored");
 
-        if (!dataHandlerString.contains("Nothing stored") && resetData == false) {
+
+        if (!dataHandlerString.contains("Nothing stored") && resetData == false) { //If previous data exists and we don't want debug reset
             Log.d("DataPref","FOUND PREVIOUS DATA");
+            //Decode string to a temporary DataHandler
             Serializable dataHandlerSerializable = stringToObject(dataHandlerString);
             DataHandler tempHandler = (DataHandler) dataHandlerSerializable;
 
+            //Override current DataHandler with the DataHandler got from memory
             dataHandler.overrideData(tempHandler);
 
         }
 
+        //If debug reset is true, wipe the memory
         if (resetData) {
             SharedPreferences prefPut = getSharedPreferences("DataPref", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();

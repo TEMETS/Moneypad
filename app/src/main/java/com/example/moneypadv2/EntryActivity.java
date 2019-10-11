@@ -24,6 +24,7 @@ import java.io.Serializable;
 
 /**
  * Used to save activity to DataHandler and also to SharedPreferences
+ * @author Teemu Luhtanen
  */
 public class EntryActivity extends AppCompatActivity {
 
