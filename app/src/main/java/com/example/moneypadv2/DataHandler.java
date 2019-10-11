@@ -32,8 +32,8 @@ public class DataHandler implements Serializable {
 
     /**
      * Used to synchronise data with SharedPreferences
-     * It takes temporary
-     * @param dataHandler
+     * Overrides current DataHandler's ArrayList with the one got from SharedPreferences
+     * @param dataHandler Temporary DataHandler got from SharedPreferences
      */
     public void overrideData(DataHandler dataHandler) {
 
@@ -52,6 +52,7 @@ public class DataHandler implements Serializable {
 
     /**
      *  Adds a Data entry to DataHandler's ArrayList
+     *  Set time is current time
      * @param value A value to present spent money
      */
     public void add(double value) {
@@ -77,7 +78,7 @@ public class DataHandler implements Serializable {
      */
     public void add(int day, int month, int hour, double value) {
 
-        if (value >= 0) {
+        if (value >= 0) { //Only add if value is positive. No meaning to add negative values
             Calendar time = Calendar.getInstance();
             time.add(Calendar.DAY_OF_MONTH, day);
             time.add(Calendar.MONTH, month);
@@ -93,7 +94,7 @@ public class DataHandler implements Serializable {
      * @return Information of Data
      */
     public String get(int i) {
-        return this.data.get(i).toString();
+        return this.data.get(i).toString(); //Data's toString() is described in Data-class
     }
 
     /**
@@ -111,14 +112,16 @@ public class DataHandler implements Serializable {
      * @return double
      */
     public double spentToday() {
-        Calendar today = Calendar.getInstance();
-        System.out.println("Looking for: " + today.get(Calendar.DAY_OF_MONTH));
+        Calendar today = Calendar.getInstance(); //Makes a reference object of current time
+        System.out.println("Looking for: " + today.get(Calendar.DAY_OF_MONTH)); //Debug message for month that the method is looking for
 
-        Double spent = 0.0;
+        Double spent = 0.0; //Makes a temporary holder to spent value
 
         for (Data data : this.data) {
-            Calendar test = data.getTime();
+            Calendar test = data.getTime(); //Get time from data
 
+            //Compares current time with Data's time
+            //If it finds matches with today, add the value to spent
             if ((today.get(Calendar.DAY_OF_MONTH) == test.get(Calendar.DAY_OF_MONTH)) && (today.get(Calendar.MONTH) == test.get(Calendar.MONTH)) && (today.get(Calendar.YEAR) == test.get(Calendar.YEAR))) {
                 spent += data.getValue();
             }
@@ -132,14 +135,17 @@ public class DataHandler implements Serializable {
      * @return double
      */
     public double spentYesterday() {
-        Calendar today = Calendar.getInstance();
-        System.out.println("Looking for: " + (today.get(Calendar.DAY_OF_MONTH)-1));
+        Calendar today = Calendar.getInstance(); //Makes a reference object of current time
+        System.out.println("Looking for: " + (today.get(Calendar.DAY_OF_MONTH)-1)); //Debug message for the month that the method is looking for
 
-        Double spent = 0.0;
+        Double spent = 0.0; //Makes a temporary holder to spent value
 
         for (Data data : this.data) {
-            Calendar test = data.getTime();
+            Calendar test = data.getTime(); //Get time from data
 
+
+            //Compares current time with Data's time
+            //If it finds matches with yesterday, add the value to spent
             if ((today.get(Calendar.DAY_OF_MONTH) -1) == test.get(Calendar.DAY_OF_MONTH) && (today.get(Calendar.MONTH) == test.get(Calendar.MONTH)) && (today.get(Calendar.YEAR) == test.get(Calendar.YEAR))) {
                 spent += data.getValue();
             }
@@ -149,7 +155,7 @@ public class DataHandler implements Serializable {
     }
 
     /**
-     * Returns the spent amount of money from all the time.
+     * Returns the spent amount of money from every entry that exists
      * @return double
      */
     public double spentAll() {

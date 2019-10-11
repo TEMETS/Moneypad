@@ -46,10 +46,15 @@ public class EntryActivity extends AppCompatActivity {
     /**
      * Saves added entry to Datahandler's ArrayList
      *  Makes a toast if add was successfull
-     *  Clears text boxes
+     *  Also clears text boxes
+     *
+     *  An interesting thing to note is that almost any amount of value can be set.
+     *  It only has to be positive. During testing purposes, it was even possible to set the value to infinity
      * @param view
      */
     public void saveEntry(View view) {
+        //First convert's textbox's text to a String, then to a Double and at the end rounds it to an Integer
+        //so the app doesn't crash if user adds decimals
         TextView month = findViewById(R.id.editText5);
         Double monthD;
         int monthI;
@@ -61,6 +66,8 @@ public class EntryActivity extends AppCompatActivity {
             monthI = 0;
         }
 
+        //First convert's textbox's text to a String, then to a Double and at the end rounds it to an Integer
+        //so the app doesn't crash if user adds decimals
         TextView day = findViewById(R.id.editText6);
         Double dayD;
         int dayI;
@@ -72,6 +79,8 @@ public class EntryActivity extends AppCompatActivity {
             dayI = 0;
         }
 
+        //First convert's textbox's text to a String, then to a Double and at the end rounds it to an Integer
+        //so the app doesn't crash if user adds decimals
         TextView hour = findViewById(R.id.editText7);
         Double hourD;
         int hourI;
@@ -83,6 +92,7 @@ public class EntryActivity extends AppCompatActivity {
             hourI = 0;
         }
 
+        //Takes textbox's text as a string and then converts it to a Double
         TextView value = findViewById(R.id.editText8);
         double valueI;
         if (value.getText().length() != 0) {
@@ -92,13 +102,15 @@ public class EntryActivity extends AppCompatActivity {
             valueI = 0;
         }
 
+        //Checks if value is positive or not
         if (valueI != 0 && valueI > 0) {
             Toast.makeText(EntryActivity.this,"Added to chart",Toast.LENGTH_SHORT).show();
 
-            dataHandler.add(dayI, monthI, hourI, valueI);
+            dataHandler.add(dayI, monthI, hourI, valueI); //Adds the specified entry to the DataHandler
 
-            String dataHandlerString = objectToString(dataHandler);
+            String dataHandlerString = objectToString(dataHandler); //Convert's DataHandler to a string using Base64 encoding
 
+            //Saves the converted DataHandler to SharedPreferences immeaditely
             SharedPreferences prefPut = getSharedPreferences("DataPref", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
             prefEditor.putString("DataHandler", dataHandlerString);
@@ -107,8 +119,10 @@ public class EntryActivity extends AppCompatActivity {
 
         } else {
             Log.d("EntryLogger", "Illegal value");
+            Toast.makeText(EntryActivity.this,"Illegal value",Toast.LENGTH_SHORT).show();
         }
 
+        //Following code just resets the textboxes
         final EditText editText5 =  findViewById(R.id.editText5);
         final EditText editText6 =  findViewById(R.id.editText6);
         final EditText editText7 =  findViewById(R.id.editText7);

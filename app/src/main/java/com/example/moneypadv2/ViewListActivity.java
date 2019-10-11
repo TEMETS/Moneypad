@@ -30,11 +30,11 @@ public class ViewListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar(); // Actionbar backbutton to MainActivity
         actionBar.setTitle("Chart");
 
-        final ListView listView = (ListView) findViewById(R.id.listView);
+        final ListView listView = (ListView) findViewById(R.id.listView); //Creates a listview
 
         dataHandler = DataHandler.getInstance(); //Gets the singleton DataHandler
 
-
+        //Defines an ArrayList with all the DataHandlers content
         ArrayList<String> values = new ArrayList<>();
         int i = 0;
         while (i < dataHandler.getSize()) {
@@ -42,10 +42,12 @@ public class ViewListActivity extends AppCompatActivity {
             i++;
         }
 
+        //Makes an ArrayAdapter to ease displaying text in ListView
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,android.R.id.text1,values);
 
         listView.setAdapter(adapter);
 
+        //Makes a toast with current content when an element is clicked on
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

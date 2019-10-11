@@ -10,8 +10,8 @@ import java.util.Date;
  * @author Touko Ala-Savikota
  */
 public class Data implements Serializable {
-    private Calendar calendar;
-    private double value;
+    private Calendar calendar; //Used to save and handle time. Great class
+    private double value; //Money value is saved as a double. Makes decimals and big values possible
 
     public Data(Calendar calendar, double value) {
         this.calendar = calendar;
@@ -19,7 +19,7 @@ public class Data implements Serializable {
     }
 
     /**
-     * Returns the Calendar object of Data
+     * Returns the Calendar object of this Data
      * @return Calendar
      */
     public Calendar getTime() {
@@ -27,13 +27,17 @@ public class Data implements Serializable {
     }
 
     /**
-     * Gets the money value of Data
+     * Returns the money value of this Data
      * @return double
      */
     public double getValue() {
         return this.value;
     }
 
+    /**
+     * Automatically generated hashCode method. Only used for debugging purposes
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -41,6 +45,11 @@ public class Data implements Serializable {
         return hash;
     }
 
+    /**
+     * Automatically generated equals method. Only used for debugging purposes
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -65,9 +74,11 @@ public class Data implements Serializable {
      */
     @Override
     public String toString() {
+        //Single digit minutes are presented in time as hh:m
+        //This makes single digit minutes to be shown as hh:0m as it makes more sense
         String minutesS = Integer.toString(this.calendar.get(Calendar.MINUTE));
         if (minutesS.length() <= 1){ //If the represented minute is 1 digit long add a zero in front of it
-            minutesS = "0" + minutesS; //Makes minutes look like xx:0x instead of xx:x
+            minutesS = "0" + minutesS; //Makes minutes look like hh:0m instead of xx:x
         }
 
 
